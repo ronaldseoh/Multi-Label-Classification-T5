@@ -412,7 +412,7 @@ class T5ForSequenceClassification(T5PreTrainedModel):
         if input_ids is not None:
             extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=input_ids.size())
         else:
-            extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=input_embeds.size())
+            extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=inputs_embeds.size())
 
         sequence_output = encoder_outputs[0]
 
