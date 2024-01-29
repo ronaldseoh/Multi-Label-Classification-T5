@@ -409,7 +409,10 @@ class T5ForSequenceClassification(T5PreTrainedModel):
             return_dict=return_dict,
         )
 
-        extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=input_ids.size())
+        if input_ids is not None:
+            extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=input_ids.size())
+        else
+            extended_mask = self.get_extended_attention_mask(attention_mask, input_shape=input_embeds.size())
 
         sequence_output = encoder_outputs[0]
 
