@@ -461,12 +461,16 @@ class T5ForSequenceClassification(T5PreTrainedModel):
             output = (logits,) + encoder_outputs[2:]
             return ((loss,) + output) if loss is not None else encoder_outputs
 
-        return SequenceClassifierOutput(
+        output = SequenceClassifierOutput(
             loss=loss,
             logits=logits,
             hidden_states=encoder_outputs.hidden_states,
             attentions=encoder_outputs.attentions,
         )
+
+        output['decoder_hidden_states'] = decoder_outputs[0]
+
+        return output
 
 
 if __name__ == "__main__":
