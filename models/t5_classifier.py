@@ -469,6 +469,7 @@ class T5ForSequenceClassification(T5PreTrainedModel):
         )
 
         output['decoder_hidden_states'] = decoder_outputs[0]
+        output['sequence_output'] = sequence_output
 
         return output
 
